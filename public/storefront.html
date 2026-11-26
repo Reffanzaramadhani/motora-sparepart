@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Katalog informasi sparepart motor Motora. Telusuri komponen berdasarkan kategori dan kecocokan tipe motor.">
+  <title>Motora Parts — Katalog Sparepart Motor</title>
+  <script>
+    document.documentElement.classList.add('sf-js');
+    /* Safety net: if the storefront script fails to boot, never leave content hidden. */
+    window.setTimeout(function () {
+      if (!document.documentElement.classList.contains('sf-ready')) {
+        document.documentElement.classList.remove('sf-js');
+      }
+    }, 2500);
+  </script>
+  <link rel="icon" href="/motora.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/storefront.css">
+  <script src="/storefront.js" defer></script>
+</head>
+<body>
+  <a class="sf-skip" href="#content">Langsung ke katalog</a>
+
+  <header class="sf-header" id="sf-header">
+    <div class="sf-shell sf-header-inner">
+      <a class="sf-brand" href="#beranda" aria-label="Motora Parts, kembali ke beranda">
+        <img src="/motora.svg" alt="" width="22" height="18">
+        <span>Motora</span>
+      </a>
+
+      <nav class="sf-nav" aria-label="Navigasi pelanggan">
+        <a class="sf-nav-link" href="#katalog" data-nav-section="katalog">Katalog</a>
+        <a class="sf-nav-link" href="#kategori" data-nav-section="kategori">Kategori</a>
+        <a class="sf-nav-link" href="#cocok" data-nav-section="cocok">Cek kecocokan</a>
+        <a class="sf-nav-link" href="#tentang" data-nav-section="tentang">Tentang</a>
+      </nav>
+
+      <div class="sf-header-actions">
+        <a class="sf-admin-link" href="/index.html" aria-label="Buka dashboard admin">Admin</a>
+        <button class="sf-menu-toggle" type="button" id="sf-menu-toggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="sf-mobile-menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sf-mobile-menu" id="sf-mobile-menu" hidden>
+      <nav class="sf-mobile-nav" aria-label="Navigasi seluler">
+        <a href="#katalog">Katalog sparepart</a>
+        <a href="#kategori">Kategori</a>
+        <a href="#cocok">Cek kecocokan</a>
+        <a href="#tentang">Cara menggunakan</a>
+        <a href="/index.html">Dashboard admin</a>
+      </nav>
+      <div class="sf-mobile-cta">
+        <a class="sf-button sf-button-primary sf-button-block" href="#katalog">Lihat katalog</a>
+        <a class="sf-button sf-button-outline sf-button-block" href="#cocok">Cek tipe motor</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="sf-local-wrap" aria-label="Informasi katalog">
+      <div class="sf-local-nav sf-shell">
+        <div class="sf-local-brand">
+          <strong>Sparepart Motor</strong>
+          <span>Katalog informasi · <span id="local-count">memuat…</span></span>
+        </div>
+        <div class="sf-local-actions">
+          <a href="#cocok" class="sf-button sf-button-outline">Cek kecocokan</a>
+          <a href="#katalog" class="sf-button sf-button-primary">Lihat katalog</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sf-hero" id="beranda" aria-labelledby="hero-title">
+      <div class="sf-shell sf-hero-inner">
+        <p class="sf-hero-eyebrow"><span class="sf-dot" aria-hidden="true"></span>Katalog sparepart motor</p>
+        <h1 id="hero-title" class="sf-hero-title">
+          <span class="sf-hero-line">Sparepart yang tepat.</span>
+          <span class="sf-hero-line sf-hero-line-soft">Untuk motor kamu.</span>
+        </h1>
+        <p class="sf-hero-intro">Telusuri komponen berdasarkan kategori dan kecocokannya untuk menemukan informasi sparepart motor dengan lebih mudah.</p>
+        <div class="sf-hero-links">
+          <a href="#katalog">Jelajahi sparepart
+            <svg class="sf-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#cocok">Cek tipe motor
+            <svg class="sf-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+        <dl class="sf-hero-stats" aria-label="Ringkasan katalog">
+          <div class="sf-stat">
+            <dt>Sparepart</dt>
+            <dd id="stat-parts">—</dd>
+          </div>
+          <div class="sf-stat">
+            <dt>Kategori</dt>
+            <dd id="stat-categories">—</dd>
+          </div>
+          <div class="sf-stat">
+            <dt>Tipe motor</dt>
+            <dd id="stat-motors">—</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="sf-shell sf-hero-visual">
+        <div class="sf-hero-orbit" aria-hidden="true"></div>
+        <div class="sf-hero-product" aria-label="Ilustrasi piston motor">
+          <img src="/media/piston.webp" alt="Ilustrasi piston sparepart motor" width="627" height="627" fetchpriority="high">
+        </div>
+        <div class="sf-product-callout">
+          <span>Katalog komponen</span>
+          <strong>Untuk matic, bebek, dan sport</strong>
+          <a href="#kategori">Mulai memilih
+            <svg class="sf-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="sf-anchor-nav" aria-label="Navigasi halaman">
+      <div class="sf-shell sf-anchor-inner">
+        <a class="sf-anchor-link" href="#kategori" data-nav-section="kategori">Kategori</a>
+        <a class="sf-anchor-link" href="#katalog" data-nav-section="katalog">Pilihan sparepart</a>
+        <a class="sf-anchor-link" href="#cocok" data-nav-section="cocok">Cek kecocokan</a>
+        <a class="sf-anchor-link" href="#tentang" data-nav-section="tentang">Cara menggunakan</a>
+      </div>
+    </nav>
+
+    <section class="sf-highlights" id="kategori" aria-labelledby="category-title">
+      <div class="sf-shell">
+        <div class="sf-section-heading sf-reveal">
+          <div>
+            <p class="sf-eyebrow">Mulai dari kebutuhanmu</p>
+            <h2 id="category-title">Pilih kategori<br>sparepart.</h2>
+          </div>
+          <a href="#katalog" class="sf-text-link">Lihat semua sparepart
+            <svg class="sf-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+        <div class="sf-category-grid" id="category-grid" aria-live="polite">
+          <p class="sf-loading">Memuat kategori…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sf-catalog-section sf-shell" id="katalog" aria-labelledby="catalog-title">
+      <div class="sf-section-heading sf-section-heading-catalog sf-reveal">
+        <div>
+          <p class="sf-eyebrow">Katalog pilihan</p>
+          <h2 id="catalog-title">Kenali komponennya.</h2>
+        </div>
+        <p class="sf-section-copy">Pilih sebuah sparepart untuk melihat kode, kategori, harga contoh, dan tipe motor yang tercantum dalam katalog.</p>
+      </div>
+
+      <div class="sf-catalog-tools sf-reveal" role="search">
+        <label class="sf-search-field" for="part-search">
+          <svg class="sf-search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.4"/><path d="M10.4 10.4 14 14"/></svg>
+          <span class="sf-visually-hidden">Cari sparepart</span>
+          <input id="part-search" type="search" autocomplete="off" placeholder="Nama, kode, atau tipe motor">
+        </label>
+        <div class="sf-filter-wrap">
+          <div class="sf-filter-scroll" id="filter-list" role="group" aria-label="Filter kategori">
+            <button class="sf-filter-button is-selected" data-category="" data-filter-anchor type="button" aria-pressed="true">Semua</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-catalog-meta">
+        <p class="sf-result-note" id="catalog-note" aria-live="polite"></p>
+        <button class="sf-reset-filter" id="reset-filters" type="button" data-reset hidden>Hapus filter</button>
+      </div>
+
+      <div class="sf-product-grid" id="product-grid" aria-live="polite">
+        <p class="sf-loading">Memuat katalog sparepart…</p>
+      </div>
+    </section>
+
+    <section class="sf-compatibility" id="cocok" aria-labelledby="compatibility-title">
+      <div class="sf-shell sf-compatibility-inner">
+        <div class="sf-compatibility-copy sf-reveal">
+          <p class="sf-eyebrow">Cari lebih terarah</p>
+          <h2 id="compatibility-title">Cocokkan dengan<br>tipe motor.</h2>
+          <p class="sf-compatibility-lede">Pilih tipe motor yang tersedia dalam katalog. Hasilnya menampilkan sparepart yang memiliki catatan kecocokan yang sama.</p>
+          <ul class="sf-compat-points">
+            <li>Pilih tipe motor dari katalog</li>
+            <li>Lihat komponen yang memiliki catatan sama</li>
+            <li>Konfirmasi kode sparepart ke toko</li>
+          </ul>
+        </div>
+        <form class="sf-compatibility-form sf-reveal" id="compatibility-form" style="--i:1">
+          <div class="sf-form-head">
+            <span>Form pencocokan</span>
+            <span class="sf-status"><span class="sf-status-dot" aria-hidden="true"></span>Katalog aktif</span>
+          </div>
+          <label for="motor-select">Tipe motor pada katalog</label>
+          <div class="sf-select-wrap">
+            <select id="motor-select" name="motor">
+              <option value="">Pilih tipe motor</option>
+            </select>
+            <svg class="sf-select-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5 8 10.5 12 6.5"/></svg>
+          </div>
+          <div class="sf-motor-chips" id="motor-chips" role="group" aria-label="Pilih cepat tipe motor"></div>
+          <button class="sf-button sf-button-primary sf-button-block" type="submit">Tampilkan sparepart</button>
+          <p id="compatibility-message" class="sf-form-message" aria-live="polite">Pilih tipe motor untuk melihat katalog yang relevan.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="sf-editorial sf-shell" aria-labelledby="editorial-title">
+      <div class="sf-editorial-copy sf-reveal">
+        <p class="sf-eyebrow">Informasi sebelum memilih</p>
+        <h2 id="editorial-title">Satu komponen kecil bisa memberi perbedaan besar.</h2>
+        <p>Gunakan nama, kode sparepart, dan catatan kecocokan sebagai titik awal. Sebelum membeli, cocokkan kembali dengan tahun, varian, dan kondisi motor kamu di toko atau bengkel.</p>
+        <a href="#katalog" class="sf-text-link">Lihat informasi komponen
+          <svg class="sf-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <figure class="sf-editorial-media sf-reveal" style="--i:1">
+        <img src="/media/filter-udara.webp" alt="Ilustrasi filter udara sparepart motor" width="627" height="627" loading="lazy">
+        <figcaption>Gambar ilustrasi sparepart.</figcaption>
+      </figure>
+    </section>
+
+    <section class="sf-how" id="tentang" aria-labelledby="how-title">
+      <div class="sf-shell">
+        <div class="sf-section-heading sf-reveal">
+          <div>
+            <p class="sf-eyebrow">Cara menggunakan katalog</p>
+            <h2 id="how-title">Informasi yang mudah dilihat.</h2>
+          </div>
+          <a href="#katalog" class="sf-text-link">Mulai dari katalog
+            <svg class="sf-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+        <div class="sf-steps">
+          <article class="sf-step sf-reveal">
+            <span class="sf-step-number">01</span>
+            <h3>Pilih kategori</h3>
+            <p>Telusuri komponen mesin, pengapian, pengereman, transmisi, dan kaki-kaki.</p>
+          </article>
+          <article class="sf-step sf-reveal" style="--i:1">
+            <span class="sf-step-number">02</span>
+            <h3>Cek kecocokan</h3>
+            <p>Gunakan keterangan tipe motor untuk menyaring pilihan yang ingin kamu lihat.</p>
+          </article>
+          <article class="sf-step sf-reveal" style="--i:2">
+            <span class="sf-step-number">03</span>
+            <h3>Konfirmasi ke toko</h3>
+            <p>Gunakan kode sparepart sebagai referensi saat menanyakan ketersediaan atau pemasangan.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sf-closing sf-shell" aria-labelledby="closing-title">
+      <div class="sf-closing-copy sf-reveal">
+        <p class="sf-eyebrow">Motora Parts</p>
+        <h2 id="closing-title">Temukan komponen<br>yang tepat.</h2>
+      </div>
+      <div class="sf-closing-actions sf-reveal" style="--i:1">
+        <p>Mulai dari kategori, cek kecocokan, lalu konfirmasi kode sparepart sebelum membeli.</p>
+        <div class="sf-closing-buttons">
+          <a class="sf-button sf-button-primary sf-button-lg" href="#katalog">Jelajahi katalog</a>
+          <a class="sf-button sf-button-outline sf-button-lg" href="#cocok">Cek kecocokan</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="sf-footer">
+    <div class="sf-shell">
+      <div class="sf-footer-top">
+        <div class="sf-footer-brand-block">
+          <a class="sf-brand sf-footer-brand" href="#beranda">
+            <img src="/motora.svg" alt="" width="24" height="20">
+            <span>Motora</span>
+          </a>
+          <p>Katalog informasi sparepart motor untuk kebutuhan demonstrasi.</p>
+        </div>
+        <nav class="sf-footer-col" aria-label="Jelajahi">
+          <h2>Jelajahi</h2>
+          <a href="#katalog">Katalog</a>
+          <a href="#kategori">Kategori</a>
+          <a href="#cocok">Cek kecocokan</a>
+        </nav>
+        <nav class="sf-footer-col" aria-label="Informasi">
+          <h2>Informasi</h2>
+          <a href="#tentang">Cara menggunakan</a>
+          <a href="/index.html">Dashboard admin</a>
+          <a href="#beranda">Kembali ke atas</a>
+        </nav>
+      </div>
+      <div class="sf-footer-bottom">
+        <p class="sf-footer-note">Harga, kecocokan, dan gambar pada halaman ini merupakan data contoh katalog. Konfirmasi ketersediaan serta kesesuaian kendaraan sebelum melakukan pembelian.</p>
+        <span class="sf-footer-mark">Motora Parts</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="sf-to-top" id="sf-to-top" type="button" aria-label="Kembali ke atas">
+    <svg class="sf-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>
+  </button>
+
+  <dialog class="sf-dialog" id="part-dialog" aria-labelledby="dialog-title">
+    <button class="sf-dialog-close" type="button" aria-label="Tutup detail">
+      <svg class="sf-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+    </button>
+    <div id="dialog-content"></div>
+  </dialog>
+</body>
+</html>
